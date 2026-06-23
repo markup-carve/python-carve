@@ -84,7 +84,3 @@ The string passed in `extensions=[...]` maps to a carve-rs extension:
 workspace. To build a publishable wheel, comment out the `path` line and
 uncomment the `git` line (the public API is identical, so no Rust changes are
 needed).
-
-## License
-
-MIT, markup-carve.
