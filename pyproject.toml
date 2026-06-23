@@ -20,7 +20,7 @@ classifiers = [
 
 [project.urls]
 Homepage = "https://markup-carve.github.io/carve/"
-Repository = "https://github.com/markup-carve/python-carve"
+Repository = "https://github.com/markup-carve/carve-py"
 
 [tool.maturin]
 # The Rust cdylib is named `carve` (see Cargo.toml [lib]); maturin builds an

@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 description = "Python bindings (PyO3) for the Carve markup language, over the carve-rs engine."
 license = "MIT"
-repository = "https://github.com/markup-carve/python-carve"
+repository = "https://github.com/markup-carve/carve-py"
 
 [lib]
 # The compiled Python extension module is named `carve`.
