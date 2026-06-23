@@ -17,7 +17,12 @@ pyo3 = { version = "0.27", features = ["abi3-py38", "extension-module"] }
 # --- Carve engine dependency ---------------------------------------------
 # Renamed to `carve_rs` in Rust code (via `package = "carve"`) so it does not
 # collide with our own `carve` #[pymodule].
-carve_rs = { package = "carve", git = "https://github.com/markup-carve/carve-rs" }
+#
+# TEMPORARY PIN: the static render-mode API (Mode::Static, StaticRenderers,
+# with_mode/with_renderers) lives on the carve-rs branch `proto/div-label-fallback`
+# (PR #143) and is not yet on carve-rs main. Re-pin this back to main (drop the
+# `branch = ...`) once carve-rs #143 merges.
+carve_rs = { package = "carve", git = "https://github.com/markup-carve/carve-rs", branch = "proto/div-label-fallback" }
 #
 # For local development against a sibling checkout, swap the line above for a
 # path dependency:
