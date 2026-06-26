@@ -13,8 +13,9 @@
 //! We never reimplement the parser; every call delegates to carve-rs.
 
 use carve_rs::{
-    Autolink, CarveExtension, Citations, Details, ExternalLinks, FencedRender, HeadingPermalinks,
-    ListTable, MathBlock, Mode, Options, Spoiler, StaticRenderers, TabNormalize, Wikilinks,
+    Autolink, CarveExtension, Citations, CodeCallouts, Details, ExternalLinks, FencedRender,
+    HeadingPermalinks, ListTable, MathBlock, Mode, Options, Spoiler, StaticRenderers, TabNormalize,
+    Wikilinks,
 };
 use pyo3::exceptions::PyValueError;
 use pyo3::prelude::*;
@@ -68,6 +69,7 @@ fn build_extension(name: &str) -> PyResult<Box<dyn CarveExtension>> {
         "tab_normalize" => Box::new(TabNormalize::new()),
         "wikilinks" => Box::new(Wikilinks::new()),
         "citations" => Box::new(Citations::new()),
+        "code-callouts" => Box::new(CodeCallouts::new()),
         other => {
             return Err(PyValueError::new_err(format!(
                 "unknown carve extension: {other:?} (supported: {})",
@@ -92,6 +94,7 @@ const SUPPORTED: &[&str] = &[
     "tab_normalize",
     "wikilinks",
     "citations",
+    "code-callouts",
 ];
 
 /// Build an owned vec of boxed extensions from the requested names.

@@ -98,11 +98,23 @@ def test_unknown_extension_raises():
         carve.to_html("# Hi", extensions=["does_not_exist"])
 
 
+def test_code_callouts_extension_changes_output():
+    # A fenced code block with a <1> marker at the end of a line, followed by
+    # a paragraph of callout definitions, triggers the code-callouts extension.
+    src = "``` python\nresult = 1 + 1  <1>\n```\n\n<1> The sum.\n"
+    core = carve.to_html(src)
+    ext = carve.to_html(src, extensions=["code-callouts"])
+    # The extension wraps the marker as <b class="callout">.
+    assert 'class="callout"' in ext
+    assert core != ext
+
+
 def test_extensions_list():
     exts = carve.extensions()
     assert isinstance(exts, list)
     assert "math_block" in exts
     assert "list_table" in exts
+    assert "code-callouts" in exts
 
 
 # --- Other renderers -----------------------------------------------------
