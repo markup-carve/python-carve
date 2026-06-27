@@ -17,7 +17,7 @@ Wheels are abi3 (`abi3-py38`), so a single wheel covers CPython 3.8+.
 From a built wheel:
 
 ```bash
-pip install carve-*.whl
+pip install carve-lang
 ```
 
 From source (needs a Rust toolchain, 1.75+):

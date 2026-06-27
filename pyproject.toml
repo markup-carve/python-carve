@@ -3,7 +3,7 @@ requires = ["maturin>=1.5,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "carve"
+name = "carve-lang"
 version = "0.1.0"
 description = "Python bindings for the Carve markup language (native PyO3 binding over carve-rs)."
 readme = "README.md"
@@ -25,4 +25,7 @@ Repository = "https://github.com/markup-carve/carve-py"
 [tool.maturin]
 # The Rust cdylib is named `carve` (see Cargo.toml [lib]); maturin builds an
 # abi3 wheel from the abi3-py38 feature, so one wheel covers Python 3.8+.
+# module-name must be set explicitly so the import stays `carve` even though
+# the distribution name is `carve-lang`.
+module-name = "carve"
 features = ["pyo3/extension-module"]
